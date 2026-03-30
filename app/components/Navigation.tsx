@@ -22,26 +22,22 @@ export default function Navigation({session}: { session: Session | null }) {
   };
 
   return (
-    <header className="bg-white backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
+    <header className="bg-white backdrop-blur-sm border-b border-gray-200 sticky top-0 h-16 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center space-x-3">
-            <div className="w-8 h-8 text-emerald-600 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-sailboat-icon lucide-sailboat">
-                <path d="M10 2v15"/>
-                <path d="M7 22a4 4 0 0 1-4-4 1 1 0 0 1 1-1h16a1 1 0 0 1 1 1 4 4 0 0 1-4 4z"/>
-                <path d="M9.159 2.46a1 1 0 0 1 1.521-.193l9.977 8.98A1 1 0 0 1 20 13H4a1 1 0 0 1-.824-1.567z"/>
-              </svg>
+            <div className="w-10 h-10 text-gray-900 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-kayak-icon lucide-kayak"><path d="M18 17a1 1 0 0 0-1 1v1a2 2 0 1 0 2-2z"/><path d="M20.97 3.61a.45.45 0 0 0-.58-.58C10.2 6.6 6.6 10.2 3.03 20.39a.45.45 0 0 0 .58.58C13.8 17.4 17.4 13.8 20.97 3.61"/><path d="m6.707 6.707 10.586 10.586"/><path d="M7 5a2 2 0 1 0-2 2h1a1 1 0 0 0 1-1z"/></svg>
             </div>
           </Link>
 
           <nav className="flex items-center space-x-6">
             <Link
               href="/"
-              className={`border-2 border-transparent px-3 py-2 text-lg font-medium transition-colors ${
+              className={`border border-transparent box-border px-3 py-2 hover:bg-gray-100 transition-colors ${
                 isActive("/")
-                  ? "text-white bg-emerald-600"
-                  : "text-gray-500 hover:text-gray-900"
+                  ? "text-gray-900 underline bg-gray-100"
+                  : "text-gray-600 hover:text-gray-900 border-b-transparent"
               }`}
             >
               Home
@@ -49,10 +45,10 @@ export default function Navigation({session}: { session: Session | null }) {
 
             {session && <Link
               href="/dashboard"
-              className={`border-2 border-transparent px-4 py-2 text-lg font-medium transition-colors ${
+              className={`border border-transparent box-border px-3 py-2 hover:bg-gray-100 transition-colors ${
                 isActive("/dashboard")
-                  ? "text-white bg-emerald-600"
-                  : "text-gray-500 hover:text-gray-900"
+                  ? "text-gray-900 underline bg-gray-100"
+                  : "text-gray-600 hover:text-gray-900 border-b-transparent"
               }`}
             >
               Dashboard
@@ -60,10 +56,10 @@ export default function Navigation({session}: { session: Session | null }) {
 
             {!session && <Link
               href="/auth"
-              className={`border-2 border-transparent px-3 py-2 text-lg font-medium transition-colors ${
+              className={`border border-transparent box-border px-3 py-2 hover:bg-gray-100 transition-colors ${
                 isActive("/auth")
-                  ? "text-white bg-emerald-600"
-                  : "text-gray-500 hover:text-gray-900"
+                  ? "text-gray-900 underline bg-gray-100"
+                  : "text-gray-600 hover:text-gray-900 border-b-transparent"
               }`}
             >
               Sign In
@@ -71,10 +67,10 @@ export default function Navigation({session}: { session: Session | null }) {
 
             {session && <Link
               href="/auth"
-              className={`border-2 border-transparent px-3 py-2 text-lg font-medium transition-colors ${
+              className={`border border-transparent box-border px-3 py-2 hover:bg-gray-100 transition-colors ${
                 isActive("/auth")
-                  ? "text-white bg-emerald-600"
-                  : "text-gray-500 hover:text-gray-900"
+                  ? "text-gray-900 underline bg-gray-100"
+                  : "text-gray-600 hover:text-gray-900 border-b-transparent"
               }`}
               onClick={handleSignOut}
             >

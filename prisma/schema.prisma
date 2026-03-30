@@ -74,3 +74,32 @@ model Verification {
   @@index([identifier])
   @@map("verification")
 }
+
+enum BookStatus {
+  available
+  reserved
+  borrowed
+  damaged
+  withdrawn
+}
+
+model Shelf {
+  bookID          String   @id @unique @default(cuid())
+  userID          String   //admin user who added the book to the shelf
+  title           String
+  author          String
+  isbn            String
+  publisher       String
+  publicationYear Int
+  edition         String?
+  genre           String
+  totalCopies     Int      @default(0)
+  availableCopies Int
+  location        String
+  status          BookStatus   @default(available)
+  dateAdded       DateTime @default(now())
+
+  @@index([userID, title])
+  @@index([dateAdded])
+  @@map("shelf")
+}

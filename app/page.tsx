@@ -21,13 +21,13 @@ export default async function Home(){
           <div className="flex gap-4 justify-center">
             {!session && <Link
               href="/auth"
-              className="bg-emerald-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition-colors"
+              className="bg-gray-100 text-gray-700 border box-border border-transparent px-8 py-3 hover:border-gray-900 hover:text-gray-900 transition-colors"
             >
               Sign In
             </Link>}
             <Link
               href="#"
-              className="bg-white text-emerald-600 px-8 py-3 font-semibold border-2 border-emerald-600 hover:bg-emerald-50 transition-colors"
+              className="bg-gray-100 text-gray-700 border box-border border-transparent px-8 py-3 hover:border-gray-900 hover:text-gray-900 transition-colors"
             >
               Learn More
             </Link>

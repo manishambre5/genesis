@@ -3,6 +3,7 @@
 import { signOut } from "@/lib/actions/auth-actions";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Sidebar from "../components/Sidebar";
 
 export default function DashboardClientPage() {
   const router = useRouter();
@@ -15,9 +16,10 @@ export default function DashboardClientPage() {
   };
 
   return (
-    <div className="min-h-full">
+    <div className="min-h-full flex gap-2">
+      <Sidebar currentPath="/dashboard" />
       {/* Main Content */}
-      <main className="max-w-full m-auto">
+      <main className="">
         Dashboard
       </main>
     </div>
