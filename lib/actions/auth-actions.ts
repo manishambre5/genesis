@@ -1,5 +1,6 @@
 "use server";
 
+import { createAuthClient } from "better-auth/client";
 import { auth } from "../auth";
 import { headers } from "next/headers";
 

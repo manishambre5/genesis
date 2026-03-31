@@ -106,7 +106,7 @@ export default function AuthClientPage() {
                   required={!isSignIn}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3 py-2 border text-stone-900 border-stone-300 shadow-sm focus:outline-none focus:ring-1 focus:ring-stone-900 focus:border-stone-900 transition-colors"
+                  className="w-full px-3 py-2 border rounded-sm text-stone-900 border-stone-300 shadow-sm focus:outline-none focus:border-stone-900 transition-colors"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -127,7 +127,7 @@ export default function AuthClientPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-3 py-2 border text-stone-900 border-stone-300 shadow-sm focus:outline-none focus:ring-1 focus:ring-stone-900 focus:border-stone-900 transition-colors"
+                className="w-full px-3 py-2 border rounded-sm text-stone-900 border-stone-300 shadow-sm focus:outline-none focus:border-stone-900 transition-colors"
                 placeholder="Enter your email"
               />
             </div>
@@ -147,7 +147,7 @@ export default function AuthClientPage() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-3 py-2 border text-stone-900 border-stone-300 shadow-sm focus:outline-none focus:ring-1 focus:ring-stone-900 focus:border-stone-900 transition-colors"
+                className="w-full px-3 py-2 border rounded-sm text-stone-900 border-stone-300 shadow-sm focus:outline-none focus:border-stone-900 transition-colors"
                 placeholder="Enter your password"
               />
             </div>
@@ -155,12 +155,12 @@ export default function AuthClientPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full flex justify-center py-3 px-4 border border-transparent shadow-sm text-sm font-medium text-stone-600 bg-stone-100 hover:border-stone-900 hover:text-stone-900 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-stone-900 transition-colors"
+              className="w-full flex justify-center"
             >
               {isLoading ? (
                 <div className="flex items-center">
                   <svg
-                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-stone-600"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
