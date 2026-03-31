@@ -4,3 +4,11 @@
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
 }
+
+form > input {
+  @apply p-2 rounded-sm focus:outline-0 focus:border-stone-600 border border-stone-300 bg-white w-full;
+}
+
+form > button {
+  @apply px-4 py-2 rounded-sm text-stone-600 font-bold text-sm uppercase border border-stone-300 bg-stone-50 transition-all hover:border-stone-700 hover:bg-white hover:text-stone-900;
+}

@@ -52,10 +52,10 @@ export default function AuthClientPage() {
       <div className="flex items-center justify-center p-4 pt-20">
         <div className="max-w-md w-full space-y-8">
           <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl font-bold text-stone-900 mb-2">
               {isSignIn ? "Welcome Back!" : "Create an Account"}
             </h1>
-            <p className="text-gray-600">
+            <p className="text-stone-600">
               {isSignIn
                 ? "Sign in to your account to continue"
                 : "Sign up to get started"}
@@ -94,7 +94,7 @@ export default function AuthClientPage() {
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-gray-600 mb-1"
+                  className="block text-sm font-medium text-stone-600 mb-1"
                 >
                   Full Name
                 </label>
@@ -106,7 +106,7 @@ export default function AuthClientPage() {
                   required={!isSignIn}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3 py-2 border text-gray-900 border-gray-300 shadow-sm focus:outline-none focus:ring-1 focus:ring-gray-900 focus:border-gray-900 transition-colors"
+                  className="w-full px-3 py-2 border text-stone-900 border-stone-300 shadow-sm focus:outline-none focus:ring-1 focus:ring-stone-900 focus:border-stone-900 transition-colors"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -115,7 +115,7 @@ export default function AuthClientPage() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-600 mb-1"
+                className="block text-sm font-medium text-stone-600 mb-1"
               >
                 Email address
               </label>
@@ -127,7 +127,7 @@ export default function AuthClientPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-3 py-2 border text-gray-900 border-gray-300 shadow-sm focus:outline-none focus:ring-1 focus:ring-gray-900 focus:border-gray-900 transition-colors"
+                className="w-full px-3 py-2 border text-stone-900 border-stone-300 shadow-sm focus:outline-none focus:ring-1 focus:ring-stone-900 focus:border-stone-900 transition-colors"
                 placeholder="Enter your email"
               />
             </div>
@@ -135,7 +135,7 @@ export default function AuthClientPage() {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-600 mb-1"
+                className="block text-sm font-medium text-stone-600 mb-1"
               >
                 Password
               </label>
@@ -147,7 +147,7 @@ export default function AuthClientPage() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-3 py-2 border text-gray-900 border-gray-300 shadow-sm focus:outline-none focus:ring-1 focus:ring-gray-900 focus:border-gray-900 transition-colors"
+                className="w-full px-3 py-2 border text-stone-900 border-stone-300 shadow-sm focus:outline-none focus:ring-1 focus:ring-stone-900 focus:border-stone-900 transition-colors"
                 placeholder="Enter your password"
               />
             </div>
@@ -155,7 +155,7 @@ export default function AuthClientPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full flex justify-center py-3 px-4 border border-transparent shadow-sm text-sm font-medium text-gray-600 bg-gray-100 hover:border-gray-900 hover:text-gray-900 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-900 transition-colors"
+              className="w-full flex justify-center py-3 px-4 border border-transparent shadow-sm text-sm font-medium text-stone-600 bg-stone-100 hover:border-stone-900 hover:text-stone-900 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-stone-900 transition-colors"
             >
               {isLoading ? (
                 <div className="flex items-center">
@@ -198,7 +198,7 @@ export default function AuthClientPage() {
                 setError(""); // Clear any previous errors
                 setName(""); // Clear name when switching modes
               }}
-              className="text-gray-600 hover:text-gray-900 underline text-sm font-medium transition-colors"
+              className="text-stone-600 hover:text-stone-900 underline text-sm font-medium transition-colors"
             >
               {isSignIn
                 ? "Don't have an account? Sign up"

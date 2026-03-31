@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider = "prisma-client"
   output   = "../lib/generated/prisma"
@@ -15,22 +10,21 @@ datasource db {
 model User {
   id            String    @id
   name          String
-  email         String
+  email         String    @unique
   emailVerified Boolean   @default(false)
   image         String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
-  sessions      Session[]
   accounts      Account[]
+  sessions      Session[]
 
-  @@unique([email])
   @@map("user")
 }
 
 model Session {
   id        String   @id
   expiresAt DateTime
-  token     String
+  token     String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   ipAddress String?
@@ -38,7 +32,6 @@ model Session {
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([token])
   @@index([userId])
   @@map("session")
 }
@@ -48,7 +41,6 @@ model Account {
   accountId             String
   providerId            String
   userId                String
-  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   accessToken           String?
   refreshToken          String?
   idToken               String?
@@ -58,6 +50,7 @@ model Account {
   password              String?
   createdAt             DateTime  @default(now())
   updatedAt             DateTime  @updatedAt
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@map("account")
@@ -75,6 +68,27 @@ model Verification {
   @@map("verification")
 }
 
+model Shelf {
+  bookID          String     @id @unique @default(cuid())
+  userID          String
+  title           String
+  author          String
+  isbn            String
+  publisher       String
+  publicationYear Int
+  edition         String?
+  genre           String
+  totalCopies     Int        @default(0)
+  availableCopies Int
+  location        String
+  status          BookStatus @default(available)
+  dateAdded       DateTime   @default(now())
+
+  @@index([userID, title])
+  @@index([dateAdded])
+  @@map("shelf")
+}
+
 enum BookStatus {
   available
   reserved
@@ -83,23 +97,26 @@ enum BookStatus {
   withdrawn
 }
 
-model Shelf {
-  bookID          String   @id @unique @default(cuid())
-  userID          String   //admin user who added the book to the shelf
-  title           String
-  author          String
-  isbn            String
-  publisher       String
-  publicationYear Int
-  edition         String?
-  genre           String
-  totalCopies     Int      @default(0)
-  availableCopies Int
-  location        String
-  status          BookStatus   @default(available)
-  dateAdded       DateTime @default(now())
+model Club {
+  memberID            String     @id @unique @default(cuid())
+  userID              String
+  firstName           String
+  lastName            String
+  email               String
+  contact             String
+  membershipStartDate DateTime   @default(now())
+  membershipExpires   DateTime
+  type                MemberType @default(normal)
+  currentRentals      String[]?
+  pastRentals Int.    String[]?
 
-  @@index([userID, title])
-  @@index([dateAdded])
-  @@map("shelf")
+  @@index([memberID, firstName, lastName])
+  @@index([currentRentals])
+  @@map("club")
+}
+
+enum MemberType {
+  regular
+  student
+  senior
 }

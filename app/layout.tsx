@@ -37,7 +37,8 @@ export default async function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <Navigation session={session} />
-        {children}</body>
+        {children}
+      </body>
     </html>
   );
 }

@@ -18,3 +18,8 @@ export const auth = betterAuth({
     },
     plugins: [nextCookies()],
 });
+
+
+export async function getCurrentUser() {
+    console.log("User Details")
+}
