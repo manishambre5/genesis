@@ -107,8 +107,8 @@ model Club {
   membershipStartDate DateTime   @default(now())
   membershipExpires   DateTime
   type                MemberType @default(normal)
-  currentRentals      String[]?
-  pastRentals Int.    String[]?
+  currentRentals      String[]
+  pastRentals Int.    String[]
 
   @@index([memberID, firstName, lastName])
   @@index([currentRentals])
