@@ -31,7 +31,7 @@ export default function Navigation({session}: { session: Session | null }) {
             </div>
           </Link>
 
-          <nav className="flex items-center space-x-6">
+          <nav className="flex items-center space-x-2 md:space-x-6">
             <Link
               href="/"
               className={`rounded-sm border box-border px-3 py-2 hover:bg-stone-100 transition-colors ${

@@ -13,19 +13,19 @@ export default async function AddBookPage() {
       redirect("/auth");
     }
   return (
-    <div className="min-h-full flex gap-2">
+    <div className="min-h-full w-full flex gap-2">
         <Sidebar currentPath="/add-member" />
         {/* Main Content */}
-        <main className="p-8 flex flex-col gap-4 w-full">
+        <main className="p-2 md:p-8 flex flex-col gap-4 w-full">
 
             {/* Header */}
             <header className="">
             <div>
-                <h1 className="text-2xl">Add a new library member</h1>
+                <h1 className="text-2xl">Add a new member</h1>
             </div>
             </header>
 
-            <form action={addMember} className="flex flex-col items-center bg-stone-100 rounded-sm border-2 border-stone-100 p-4 gap-2 max-w-1/2">
+            <form action={addMember} className="flex flex-col items-center bg-stone-50 rounded-sm border border-stone-300 p-2 md:p-4 gap-2 md:max-w-1/2">
             <div>
               <label htmlFor="firstName" className="text-sm">First Name *</label>
               <input type="text" id="firstName" name="firstName" required placeholder="Enter First Name" />

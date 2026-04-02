@@ -2,9 +2,9 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import Sidebar from "../components/Sidebar";
-import { addBook } from "@/lib/actions/crud";
+//import { lendBook } from "@/lib/actions/crud";
 
-export default async function AddBookPage() {
+export default async function LendBookPage() {
     const session = await auth.api.getSession({
         headers: await headers(),
     });
@@ -15,18 +15,18 @@ export default async function AddBookPage() {
 
     return (
         <div className="min-h-full flex gap-2">
-            <Sidebar currentPath="/add-book" />
+            <Sidebar currentPath="/lend-book" />
             {/* Main Content */}
             <main className="p-2 md:p-8 flex flex-col gap-4 w-full">
 
                 {/* Header */}
                 <header className="">
                 <div>
-                    <h1 className="text-2xl">Add a new book</h1>
+                    <h1 className="text-2xl">Lend a book</h1>
                 </div>
                 </header>
 
-                <form action={addBook} className="flex flex-col items-center bg-stone-50 rounded-sm border border-stone-300 p-2 md:p-4 gap-2 md:max-w-1/2">
+                <form className="flex flex-col items-center bg-stone-50 rounded-sm border border-stone-300 p-2 md:p-4 gap-2 md:max-w-1/2">
                     <div>
                         <label htmlFor="isbn" className="text-sm">ISBN *</label>
                         <input type="text" id="isbn" name="isbn" required placeholder="Enter ISBN" />
@@ -72,7 +72,7 @@ export default async function AddBookPage() {
                         <input type="text" id="location" name="location" required placeholder="Enter location of the book in the Library" />
                     </div>
 
-                    <button>Add Book</button>
+                    <button>Lend Book</button>
                 </form>
 
             </main>

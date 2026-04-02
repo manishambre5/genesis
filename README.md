@@ -9,7 +9,12 @@ This is a library management system.
 - Prisma
 - PostgreSQL (Neon)
 
+## Current Core Features
+- Dashboard (View statistics and details)
+- View, manage, and Search books and members
+- Transactions (Lending and Returns)
+
 ## To-do list
 
-- Complete core functionalities
+- Expand core functionalities
 - Deploy on Vercel

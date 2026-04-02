@@ -40,7 +40,7 @@ export async function addBook(formData: FormData) {
         });
     } catch (error) {
         throw new Error("Failed to add a new book!");
-    }
+    } finally { redirect("/dashboard"); }
 }
 
 
@@ -78,5 +78,5 @@ export async function addMember(formData: FormData) {
         //throw new Error("Failed to add a new member!");
         console.error("PRISMA ERROR:", error);
         throw error;
-    }
+    } finally { redirect("/dashboard"); }
 }
