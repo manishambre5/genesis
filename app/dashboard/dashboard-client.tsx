@@ -1,5 +1,5 @@
+import { AppHeader } from "@/components/app-header";
 import prisma from "@/lib/prisma";
-import Sidebar from "../components/Sidebar";
 import { TrendingUp } from "lucide-react";
 
 export default async function DashboardClientPage() {
@@ -37,7 +37,7 @@ export default async function DashboardClientPage() {
 
   return (
     <div className="min-h-full flex gap-2 bg-white">
-      <Sidebar currentPath="/dashboard" />
+      
       {/* Main Content */}
       <main className="p-2 md:p-8 flex flex-col gap-4 w-full">
 

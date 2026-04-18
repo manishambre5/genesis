@@ -5,6 +5,7 @@ This is a library management system.
 - [Next.js 16](https://nextjs.org)
 - React JS 19
 - Tailwind CSS v4
+- Shadcn-UI
 - Better Auth
 - Prisma
 - PostgreSQL (Neon)

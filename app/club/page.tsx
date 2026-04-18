@@ -1,7 +1,7 @@
+import { AppHeader } from "@/components/app-header";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import Sidebar from "../components/Sidebar";
 
 export default async function SettingsPage() {
   const session = await auth.api.getSession({
@@ -13,7 +13,7 @@ export default async function SettingsPage() {
     }
   return(
     <div className="min-h-full flex gap-2">
-      <Sidebar currentPath="/club" />
+      
       {/* Main Content */}
       <main className="p-2 md:p-8 flex flex-col gap-4 w-full">
 

@@ -48,18 +48,6 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-input {
-  @apply p-2 rounded-sm focus:outline-0 focus:border-stone-600 border border-stone-300 bg-white w-full;
-}
-
-form > div {
-  @apply w-full flex flex-col;
-}
-
-form > button {
-  @apply px-4 py-2 rounded-sm shadow-sm text-stone-600 font-bold text-sm uppercase border border-stone-300 bg-stone-50 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-stone-900 transition-all hover:border-stone-700 hover:text-stone-900;
-}
-
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.147 0.004 49.3);
@@ -127,16 +115,4 @@ form > button {
   --sidebar-accent-foreground: oklch(0.986 0.002 67.8);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.547 0.021 43.1);
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-  html {
-    @apply font-sans;
-  }
 }

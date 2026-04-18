@@ -1,8 +1,32 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn, signUp } from "@/lib/actions/auth-actions";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field"
+import {
+  Item,
+  ItemContent,
+  ItemMedia,
+  ItemTitle,
+} from "@/components/ui/item";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
+import { CircleX } from "lucide-react";
 
 export default function AuthClientPage() {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -12,9 +36,6 @@ export default function AuthClientPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
-  const searchParams = useSearchParams();
-
-  // Get callback URL from search params (set by middleware)
 
 
   const handleEmailAuth = async (e: React.SubmitEvent) => {
@@ -48,165 +69,119 @@ export default function AuthClientPage() {
   };
 
   return (
-    <div className="min-h-full">
-      <div className="flex items-center justify-center p-4 pt-20">
-        <div className="max-w-md w-full space-y-8">
-          <div className="text-center">
-            <h1 className="text-3xl font-bold text-stone-900 mb-2">
+      <div className="h-full flex items-center justify-center p-4">
+        <Card className="w-lg">
+          <CardHeader>
+            <CardTitle className="text-2xl">
               {isSignIn ? "Welcome Back!" : "Create an Account"}
-            </h1>
-            <p className="text-stone-600">
+            </CardTitle>
+            <CardDescription>
               {isSignIn
                 ? "Sign in to your account to continue"
                 : "Sign up to get started"}
-            </p>
-          </div>
-
-          {/* Error Display */}
-          {error && (
-            <div className="bg-red-50 border border-red-200 -lg p-4">
-              <div className="flex">
-                <div className="shrink-0">
-                  <svg
-                    className="h-5 w-5 text-red-400"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <div className="ml-3">
-                  <p className="text-sm text-red-800">{error}</p>
-                </div>
-              </div>
-            </div>
-          )}
+            </CardDescription>
+          </CardHeader>
 
           {/** OAuth removed... */}
 
           {/* Email/Password Form */}
+          <CardContent>
           <form onSubmit={handleEmailAuth} className="space-y-4">
-            {!isSignIn && (
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-stone-600 mb-1"
-                >
-                  Full Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  autoComplete="name"
-                  required={!isSignIn}
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-sm text-stone-900 border-stone-300 shadow-sm focus:outline-none focus:border-stone-900 transition-colors"
-                  placeholder="Enter your full name"
-                />
-              </div>
-            )}
-
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-stone-600 mb-1"
-              >
-                Email address
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-3 py-2 border rounded-sm text-stone-900 border-stone-300 shadow-sm focus:outline-none focus:border-stone-900 transition-colors"
-                placeholder="Enter your email"
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-stone-600 mb-1"
-              >
-                Password
-              </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete={isSignIn ? "current-password" : "new-password"}
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-3 py-2 border rounded-sm text-stone-900 border-stone-300 shadow-sm focus:outline-none focus:border-stone-900 transition-colors"
-                placeholder="Enter your password"
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full flex justify-center"
-            >
-              {isLoading ? (
-                <div className="flex items-center">
-                  <svg
-                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-stone-600"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    ></circle>
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    ></path>
-                  </svg>
-                  {isSignIn ? "Signing in..." : "Creating account..."}
-                </div>
-              ) : isSignIn ? (
-                "Sign In"
-              ) : (
-                "Create Account"
+            <FieldGroup>
+              {!isSignIn && (
+                <Field>
+                  <FieldLabel htmlFor="name">Full Name</FieldLabel>
+                  <Input
+                    id="name"
+                    name="name"
+                    type="text"
+                    autoComplete="name"
+                    required={!isSignIn}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Enter your full name"
+                  />
+                </Field>
               )}
-            </button>
+
+              <Field>
+                <FieldLabel htmlFor="email">Email address</FieldLabel>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                />
+              </Field>
+
+              <Field>
+                <FieldLabel htmlFor="password">Password</FieldLabel>
+                <Input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete={isSignIn ? "current-password" : "new-password"}
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter your password"
+                />
+              </Field>
+
+              {/* Error Display */}
+              {error && (
+                <Item size="xs" className="text-red-500">
+                  <ItemMedia variant="icon">
+                    <CircleX />
+                  </ItemMedia>
+                  <ItemContent>
+                    <ItemTitle>{error}</ItemTitle>
+                  </ItemContent>
+                </Item>
+              )}
+
+
+              <Button
+                type="submit"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <span className="flex items-center gap-1">
+                    <Spinner />
+                    {isSignIn ? "Signing in..." : "Creating account..."}
+                  </span>
+                ) : isSignIn ? (
+                  "Sign In"
+                ) : (
+                  "Create Account"
+                )}
+              </Button>
+            </FieldGroup>
           </form>
+          </CardContent>
 
           {/* Toggle between Sign In and Sign Up */}
-          <div className="text-center">
-            <button
+          <CardFooter>
+            <Button
               type="button"
+              size="xs"
+              variant="link"
               onClick={() => {
                 setIsSignIn(!isSignIn);
                 setError(""); // Clear any previous errors
                 setName(""); // Clear name when switching modes
               }}
-              className="text-stone-600 hover:text-stone-900 underline text-sm font-medium transition-colors"
             >
               {isSignIn
                 ? "Don't have an account? Sign up"
                 : "Already have an account? Sign in"}
-            </button>
-          </div>
-        </div>
+            </Button>
+          </CardFooter>
+        </Card>
       </div>
-    </div>
   );
 }

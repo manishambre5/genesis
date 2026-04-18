@@ -1,7 +1,7 @@
+import { AppHeader } from "@/components/app-header";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import Sidebar from "../components/Sidebar";
 //import { returnBook } from "@/lib/actions/crud";
 
 export default async function ReturnBookPage() {
@@ -15,7 +15,7 @@ export default async function ReturnBookPage() {
 
     return (
         <div className="min-h-full flex gap-2">
-            <Sidebar currentPath="/return-book" />
+            
             {/* Main Content */}
             <main className="p-2 md:p-8 flex flex-col gap-4 w-full">
 

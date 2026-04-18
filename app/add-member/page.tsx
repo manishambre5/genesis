@@ -1,8 +1,8 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import Sidebar from "../components/Sidebar";
 import { addMember } from "@/lib/actions/crud";
+import { AppHeader } from "@/components/app-header";
 
 export default async function AddBookPage() {
   const session = await auth.api.getSession({
@@ -14,7 +14,7 @@ export default async function AddBookPage() {
     }
   return (
     <div className="min-h-full w-full flex gap-2">
-        <Sidebar currentPath="/add-member" />
+        
         {/* Main Content */}
         <main className="p-2 md:p-8 flex flex-col gap-4 w-full">
 

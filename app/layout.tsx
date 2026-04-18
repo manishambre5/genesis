@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans, Inter } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
-import Navigation from "./components/Navigation";
+import { AppSidebar } from "@/components/app-sidebar/app-sidebar";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { cn } from "@/lib/utils";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { AppHeader } from "@/components/app-header";
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-serif",
@@ -33,9 +36,16 @@ export default async function RootLayout({
       lang="en"
       className={cn("h-full", "antialiased", playfairDisplay.variable, "font-sans", inter.variable)}
     >
-      <body className="min-h-full flex flex-col">
-        <Navigation session={session} />
-        {children}
+      <body>
+        <SidebarProvider>
+          <TooltipProvider>
+            <AppSidebar session={session} />
+            <SidebarInset className="w-full">
+              <AppHeader session={session} />
+              {children}
+            </SidebarInset>
+          </TooltipProvider>
+        </SidebarProvider>
       </body>
     </html>
   );
