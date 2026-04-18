@@ -1,19 +1,17 @@
 import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans } from "next/font/google";
+import { Playfair_Display, DM_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/Navigation";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import { cn } from "@/lib/utils";
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-serif",
   subsets: ["latin"],
 });
 
-const dMSans = DM_Sans({
-  variable: "--font-sans",
-  subsets: ["latin"],
-});
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: "genesis",
@@ -33,7 +31,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfairDisplay.variable} ${dMSans.variable} h-full antialiased`}
+      className={cn("h-full", "antialiased", playfairDisplay.variable, "font-sans", inter.variable)}
     >
       <body className="min-h-full flex flex-col">
         <Navigation session={session} />

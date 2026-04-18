@@ -26,10 +26,10 @@ export default async function Home(){
               Sign In
             </Link>}
             <Link
-              href="#"
+              href="https://github.com/manishambre5/genesis"
               className="rounded-sm bg-stone-50 text-stone-600 border box-border border-stone-300 px-8 py-3 hover:border-stone-900 hover:text-stone-900 transition-colors"
             >
-              Learn More
+              Source Code
             </Link>
           </div>
         </div>
